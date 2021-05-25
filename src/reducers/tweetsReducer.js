@@ -1,6 +1,6 @@
 import { RECIEVE_TWEETS } from "../actions/tweets";
 
-const tweets = (state = {}, action) => {
+export default function tweets (state = {}, action) {
   switch (action.type) {
     case RECIEVE_TWEETS: {
       return { ...state, ...action.tweets };
@@ -10,7 +10,6 @@ const tweets = (state = {}, action) => {
   }
 };
 
-export default tweets;
 
 /* import { RECEIVE_TWEETS } from '../actions/tweets'
 

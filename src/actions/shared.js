@@ -8,7 +8,7 @@ const AUTHED_ID = "sarah_edo";
 //Authed users
 
 //async request
-export default handleInitialData = () => {
+export function handleInitialData () {
   return (dispatch) => {
     //call the API and pass both actions the data they need
     //recieveUsers with users
