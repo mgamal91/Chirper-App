@@ -1,7 +1,7 @@
 import { RECIEVE_USERS } from '../actions/users';
 
 
-export default users=(state={}, action)=>
+const users=(state={}, action)=>
 {
     switch (action.type)
     {
@@ -14,3 +14,4 @@ export default users=(state={}, action)=>
     }
     
 }
+export default users;
