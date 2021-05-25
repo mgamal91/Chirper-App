@@ -1,12 +1,12 @@
 import { RECIEVE_TWEETS } from "../actions/tweets";
 
-const tweets = (state = {}, action) => {
+const tweets = (myTweets = {}, action) => {
   switch (action.type) {
     case RECIEVE_TWEETS: {
-      return { ...state, ...action.tweets };
+      return { ...myTweets, ...action.tweets };
     }
     default:
-      return state;
+      return myTweets;
   }
 };
 
