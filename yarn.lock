@@ -4540,6 +4540,11 @@
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.5.tgz"
   "version" "4.17.5"
 
+"logger@^0.0.1":
+  "integrity" "sha1-ywgXH4pvb2dLhJna31C+1L77csQ="
+  "resolved" "https://registry.npmjs.org/logger/-/logger-0.0.1.tgz"
+  "version" "0.0.1"
+
 "loglevel@^1.4.1":
   "integrity" "sha1-4PyVEztu8nbNyIh82vJKpvFW+Po="
   "resolved" "https://registry.npmjs.org/loglevel/-/loglevel-1.6.1.tgz"
@@ -6131,6 +6136,11 @@
   "version" "1.0.2"
   dependencies:
     "balanced-match" "^0.4.2"
+
+"redux-thunk@^2.3.0":
+  "integrity" "sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw=="
+  "resolved" "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.3.0.tgz"
+  "version" "2.3.0"
 
 "redux@^4.0.0", "redux@^4.1.0":
   "integrity" "sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g=="
