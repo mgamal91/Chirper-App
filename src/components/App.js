@@ -15,5 +15,9 @@ class App extends Component {
     )
   }
 }
-
-export default connect()(App)
+const mapStateToProps=(state)=>
+{
+  console.log('memo',state);
+return {tweets:state.tweets, users:state.users}
+}
+export default connect(mapStateToProps)(App)
