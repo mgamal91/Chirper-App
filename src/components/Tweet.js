@@ -20,15 +20,11 @@ export class Tweet extends Component {
   };
   render() {
     const { tweet } = this.props;
-    const {
-      name,
-      avatar,
-      text,
-      hasLiked,
-      likes,
-      replies,
-      parent,
-    } = tweet;
+    /* formatTweet->return{name, id, timestamp, text, avatar: avatarURL, likes: likes.length, 
+        replies: replies.length, hasLiked: likes.includes(authedUser), 
+        parent:!parentTweet ? null : {author: parentTweet.author,id: parentTweet.id,}} */
+    const { name, text, avatar, likes, replies, hasLiked, parent } = tweet;
+    //name, text, avatar, likes, replies, hasLiked, parent
     const { time } = this.props;
 
     return (
