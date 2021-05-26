@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { formatTweet} from '../utils/helpers'
 export class Tweet extends Component {
     render() {
+        const {tweet}=this.props
         return (
             <div className='tweet'>
-                
+                {tweet.text}
             </div>
         )
     }
@@ -14,14 +15,18 @@ export class Tweet extends Component {
 //ownProps==={id}
 const mapStateToProps=({authedUser, tweets, users}, ownProps)=>
 {
-    //console.log('tweet_tweets', ownProps);
-    //console.log('tweet_users', users);
-    //formatTweet (tweet, author, authedUser, parentTweet)
-    //users is an object with names used as keys miada:{}, nada:{}
-    //tweets is an object with id used as keys and it have same name used in users inside with property author
-    //check myReadME for a snippet of how the tweets and users looks like
     const tweet = tweets[ownProps.id];
+    //id of the author you are replying to so i will get the tweet of this 
+    //const parentTweet= tweets[tweet.replyingTo]
+    //user go to a random url that tweet doesnt exist
+    const parentTweet=tweet?tweets[tweet.replyingTo]:null;
+   /*  return{authedUser, 
+        tweet:formatTweet(tweet, users[tweet.author], authedUser, parentTweet),} */
+    //same here if the tweet exist then pass the data to the formatTweet fn if not return null 
     return{authedUser, 
-        tweet:formatTweet(tweet, users[tweet.author], authedUser),}
+        tweet: tweet?formatTweet(tweet, users[tweet.author], authedUser, parentTweet):null
+        
+        ,}
+    
 }
 export default connect(mapStateToProps)(Tweet);
