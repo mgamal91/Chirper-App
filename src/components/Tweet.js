@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { formatTweet} from '../utils/helpers'
 export class Tweet extends Component {
     render() {
-        const {tweet}=this.props
+        const {tweet}=this.props;
+        if(tweet === null)
+        {
+            return <p>This Tweet Doesn't Exist!</p>
+        }
+        console.log(this.props);
         return (
             <div className='tweet'>
                 {tweet.text}
