@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 
 export class Dashboard extends Component {
   render() {
-    console.log(this.props.tweetIds);
+    const {tweetIds}=this.props;
+    console.log(tweetIds);
     return (
       <div>
         <h3 className="center">Your Timeline</h3>
         <ul className="dashboard-list">
-          {this.props.tweetIds.map((tweet) => (
-            <li key={tweet}>
-              <div>Tweet ID:{tweet}</div>
+          {tweetIds.map((tweetID) => (
+            <li key={tweetID}>
+              <div>Tweet ID:{tweetID}</div>
             </li>
           ))}
         </ul>
