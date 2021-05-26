@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 //already existing
-import { formatTweet, formatDate } from '../utils/helpers'
+import { formatTweet, formatDate } from '../utils/helpers';
+//icons from npm i react-icons
+import TiArrowBackOutline from 'react-icons/lib/ti/arrow-back-outline'
+import TiHeartOutline from 'react-icons/lib/ti/heart-outline'
+import TiHeartFullOutline from 'react-icons/lib/ti/heart-full-outline'
 export class Tweet extends Component {
     render() {
-        const {avatar, name,text}=this.props.tweet;
-        const {time, parentTweet}=this.props;
+        const {tweet}=this.props;
+        const {name, avatar, timestamp, text, hasLiked, likes, replies, id, parent}=tweet;
+        const {time}=this.props;
         return (
             <div className='tweet'>
-                <img src={this.props.tweet.avatar} alt='hi' className='avatar'/>
+                <img src={avatar} alt='hi' className='avatar'/>
                 <br/>
-                {this.props.tweet.name}
+                {name}
                 <br/>
-                {this.props.time}
+                {time}
                 <br/>
-                {/* {parentTweet === null ? console.log('null'):<span>replies to {this.props.tweet.parentTweet}</span>} */}
-                <br/>
-                {this.props.tweet.text}
-                
+                {text}
             </div>
         )
     }
@@ -25,18 +27,10 @@ export class Tweet extends Component {
 //ownProps==={id}
 const mapStateToProps=({authedUser, tweets, users}, {id})=>
 {
-    //console.log('tweet_tweets', tweets);
-    //console.log('tweet_users', users);
-    //formatTweet (tweet, author, authedUser, parentTweet)
-    //users is an object with names used as keys miada:{}, nada:{}
-    //tweets is an object with id used as keys and it have same name used in users inside with property author
-    //check myReadME for a snippet of how the tweets and users looks like
     const tweet = tweets[id];
-    //check if the tweet have replies yet or not to add the text of replyingto who
-    //will return the id of the one this tweet is replying to
-    const parentTweet=tweet[tweets.replyingTo];
+    const parentTweet=tweet?tweet[tweets.replyingTo]:null;
     return{authedUser, 
-        tweet:formatTweet(tweet, users[tweet.author], authedUser, parentTweet),
-    time:formatDate(tweet.timestamp), parentTweet};
+        tweet:tweet?formatTweet(tweet, users[tweet.author], authedUser, parentTweet):null,
+    time:formatDate(tweet.timestamp)};
 }
 export default connect(mapStateToProps)(Tweet);
