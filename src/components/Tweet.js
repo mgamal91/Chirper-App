@@ -72,7 +72,7 @@ const mapStateToProps = ({ authedUser, tweets, users }, { id }) => {
     tweet: tweet
       ? formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
       : null,
-    time: formatDate(tweet.timestamp),
+    time: tweet?formatDate(tweet.timestamp):null,
   };
 };
 export default connect(mapStateToProps)(Tweet);
