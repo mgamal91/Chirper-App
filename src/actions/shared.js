@@ -2,7 +2,8 @@ import { getInitialData } from "../utils/api";
 import { recieveUsers } from "./users";
 import { recieveTweets } from "./tweets";
 import { setAuthedUser } from "./authedUser";
-
+//already included in package action creators 
+import { showLoading, hideLoading } from 'react-redux-loading';
 //Authed users to pass to action(authedUser.js)
 const AUTHED_ID = "sarah_edo";
 //Authed users
@@ -10,6 +11,8 @@ const AUTHED_ID = "sarah_edo";
 //async request
 export function handleInitialData () {
   return (dispatch) => {
+    //before getting the data show the loader
+    dispatch(showLoading());
     //call the API and pass both actions the data they need
     //recieveUsers with users
     //recieveTweets with tweets
@@ -18,6 +21,8 @@ export function handleInitialData () {
       dispatch(recieveUsers(users));
       dispatch(recieveTweets(tweets));
       dispatch(setAuthedUser(AUTHED_ID));
+      //after the data is fully dispatched hide the loader
+      dispatch(hideLoading());
     });
   };
 };
