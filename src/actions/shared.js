@@ -21,3 +21,14 @@ export function handleInitialData () {
     });
   };
 };
+/* export const handleToggleTweet=(info)=>
+{
+  return (dispatch)=>
+  {
+    return saveLikeToggle(info).then(()=>
+    {
+      dispatch(toggleTweet(info));
+    })
+  }
+}
+ */
