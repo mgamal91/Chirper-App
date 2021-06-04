@@ -18,7 +18,9 @@ export const toggleTweet = ({ id, hasLiked, authedUser }) => {
 };
 export const handleToggleTweet = (info) => {
   return (dispatch) => {
+    //dispatch first to update UI first then return the data of like from API
     dispatch(toggleTweet(info));
+    //catch any error in like(the part starting with catch can be removed)
     return saveLikeToggle(info).catch((e) => {
       console.warn("Error in handleToggleTweet:", e);
       //set toggle  tweet to its initial state
@@ -44,3 +46,5 @@ export const handleToggleTweet = (info) => {
   }
 }
  */
+
+//TODO: Add a tweet
