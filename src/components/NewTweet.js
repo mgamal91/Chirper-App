@@ -1,20 +1,27 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
 
+import {handleAddTweet} from '../actions/tweets';
 export class NewTweet extends Component {
   state = { text: "" };
   onInputChange = (event) => {
     const text = event.target.value;
     this.setState({ text: text });
-    console.log(event.target.value);
+    document.getElementById('myBtn').style.cursor='pointer';
+    /* console.log(event.target.value); */
   };
   onFormSubmit = (event) => {
     event.preventDefault();
     const { text } = this.state;
     console.log("submit", text);
     //TODO: Add this text to store
+    //handleAddTweet=(text, replyingTo)
+    const {dispatch, id}=this.props;
+    dispatch(handleAddTweet(text, id))
     /* Taylor
     *this.setState(() => ({text: ''})) */
     this.setState({ text: "" });
+    document.getElementById('myBtn').style.cursor='not-allowed';
   };
 
   render() {
@@ -38,11 +45,15 @@ export class NewTweet extends Component {
                  {tweetLeft}
              </div>
           )}
-          <button className='btn' type='submit' disabled={text === ''}>Submit</button>
+          {/* added a  style={{cursor:'not-allowed'}} as the original style will still have the cursor as a hand*/}
+          <button id="myBtn" className='btn' type='submit' style={{cursor:'not-allowed'}} disabled={text === ''}>Submit</button>
         </form>
       </div>
     );
   }
 }
-
-export default NewTweet;
+/* const mapStateToProps=(state)=>
+{
+    return{}
+} */
+export default connect(/* mapStateToProps */)(NewTweet);

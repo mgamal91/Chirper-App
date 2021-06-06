@@ -233,7 +233,12 @@ export function _saveLikeToggle ({ id, hasLiked, authedUser }) {
 }
 
 function generateUID () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  //my add to start with an a 
+  const miada=0;
+  const myReturn=Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  //original
+  //return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  return miada+myReturn;
 }
 
 function formatTweet ({ author, text, replyingTo = null }) {

@@ -1,7 +1,8 @@
-import { saveLikeToggle } from "../utils/api";
-
+import { saveLikeToggle, saveTweet } from "../utils/api";
+import { showLoading, hideLoading} from 'react-redux-loading'
 export const RECIEVE_TWEETS = "RECIEVE_TWEETS";
 export const TOGGLE_TWEET = "TOGGLE_TWEET";
+export const ADD_TWEET="ADD_TWEET";
 
 //tweets argument is recieved from the API call
 /* export function recieveTweets(tweets)
@@ -48,3 +49,36 @@ export const handleToggleTweet = (info) => {
  */
 
 //TODO: Add a tweet
+//will recieve text from the user in the NewTweet comp
+export const addTweet=(tweet)=>
+{
+  return{type:ADD_TWEET, tweet}
+}
+export const handleAddTweet=(text, replyingTo)=>
+{
+  //getState currentState of our store
+  return (dispatch, getState)=>
+  {
+    const {authedUser}=getState();
+    dispatch(showLoading());
+//if this tweet have a reply to property(replyingTo is passed to it)
+//_saveTweet ({ text, author, replyingTo })
+return saveTweet({
+  text, 
+  author:authedUser,
+  replyingTo})
+  //once saveTweet is done pass the tweet OBJECT to the addTweet action(the above one) to pass it to reducer
+  .then((tweet)=>dispatch(addTweet(tweet)))
+  //once passing is done hide loader
+  .then(()=>dispatch(hideLoading()))
+ 
+/* return saveTweet({
+  text,
+  author: authedUser,
+  replyingTo
+})
+  .then((tweet) => dispatch(addTweet(tweet)))
+  .then(() => dispatch(hideLoading())) */
+
+}
+}
