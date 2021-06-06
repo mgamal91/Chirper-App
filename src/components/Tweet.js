@@ -6,6 +6,7 @@ import { formatTweet, formatDate } from "../utils/helpers";
 import TiArrowBackOutline from "react-icons/lib/ti/arrow-back-outline";
 import TiHeartOutline from "react-icons/lib/ti/heart-outline";
 import TiHeartFullOutline from "react-icons/lib/ti/heart-full-outline";
+import {Link, withRouter} from 'react-router-dom';
 import {handleToggleTweet} from '../actions/tweets'
 export class Tweet extends Component {
   //event, parent.id
@@ -14,6 +15,8 @@ export class Tweet extends Component {
     console.log("clicked", id);
     //todo:
     //redirect to the original tweet
+    this.props.history.push(`/tweet/${id}`);
+   
   };
   handleLike = (event) => {
     event.preventDefault();
@@ -26,12 +29,12 @@ export class Tweet extends Component {
     /* formatTweet->return{name, id, timestamp, text, avatar: avatarURL, likes: likes.length, 
         replies: replies.length, hasLiked: likes.includes(authedUser), 
         parent:!parentTweet ? null : {author: parentTweet.author,id: parentTweet.id,}} */
-    const { name, text, avatar, likes, replies, hasLiked, parent } = tweet;
+    const { name, text, avatar, likes, replies, hasLiked, parent, id } = tweet;
     //name, text, avatar, likes, replies, hasLiked, parent
     const { time } = this.props;
 
     return (
-      <div className="tweet">
+      <Link to={`/tweet/${id}`} className="tweet">
         <img src={avatar} alt={`avatar of ${name}`} className="avatar" />
         <div className="tweet-info">
           <div>
@@ -61,7 +64,7 @@ export class Tweet extends Component {
             <span>{likes !== 0 && likes}</span>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
@@ -78,4 +81,4 @@ const mapStateToProps = ({ authedUser, tweets, users }, { id }) => {
     time: tweet?formatDate(tweet.timestamp):null,
   };
 };
-export default connect(mapStateToProps)(Tweet);
+export default withRouter(connect(mapStateToProps)(Tweet));

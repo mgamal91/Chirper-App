@@ -9,7 +9,7 @@ class TweetPage extends Component {
     const { id, replies } = this.props;
     return (
       <div>
-        Tweet Page
+        
         {/* pass the id to Tweet comp to display this specific tweet */}
         {/* pass NewTweet the id to know this is  replyTo not just a new tweet*/}
         <Tweet id={id} />

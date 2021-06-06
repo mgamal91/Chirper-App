@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import {handleAddTweet} from '../actions/tweets';
 export class NewTweet extends Component {
-  state = { text: "" };
+  state = { text: "", toHome:false };
   onInputChange = (event) => {
     const text = event.target.value;
     this.setState({ text: text });
@@ -20,14 +21,21 @@ export class NewTweet extends Component {
     dispatch(handleAddTweet(text, id))
     /* Taylor
     *this.setState(() => ({text: ''})) */
-    this.setState({ text: "" });
+   //if there is an id means this is a reply then dont go home, if id is null that means a new tweet
+   //when done redirect me back home
+    this.setState({ text: "", toHome: id? false : true });
     document.getElementById('myBtn').style.cursor='not-allowed';
   };
 
   render() {
-      const {text}=this.state;
+      const {text, toHome}=this.state;
       const tweetLeft=280-text.length;
       /* todo: redirect to home if submitted */
+
+    if(toHome === true)
+    {
+      return <Redirect to='/'></Redirect>
+    }
     return (
       <div>
         <h3 className="center">Compose New Tweet:</h3>
