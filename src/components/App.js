@@ -7,6 +7,7 @@ import LoadingBar from "react-redux-loading";
 import TweetPage from "./TweetPage";
 import NewTweet from "./NewTweet";
 import Nav from "./Nav";
+import P404 from "./P404";
 
 class App extends Component {
   componentDidMount() {
@@ -29,6 +30,7 @@ class App extends Component {
                   <Route path="/tweet/:id" component={TweetPage} />
                   {/*       <Route path="/tweet" component={}><TweetPage match={{params:{id:'8xf0y6ziyjabvozdd253nd'}}}/></Route>
                    */}
+                   <Route path="" component={P404}/>
                 </div>
               )}
             </div>

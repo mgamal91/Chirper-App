@@ -6,7 +6,7 @@ import { formatTweet, formatDate } from "../utils/helpers";
 import TiArrowBackOutline from "react-icons/lib/ti/arrow-back-outline";
 import TiHeartOutline from "react-icons/lib/ti/heart-outline";
 import TiHeartFullOutline from "react-icons/lib/ti/heart-full-outline";
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 import {handleToggleTweet} from '../actions/tweets'
 export class Tweet extends Component {
   //event, parent.id
@@ -26,6 +26,11 @@ export class Tweet extends Component {
   };
   render() {
     const { tweet } = this.props;
+    if(tweet === null)
+    {
+      return <Redirect to='/P404'></Redirect>
+    }
+   
     /* formatTweet->return{name, id, timestamp, text, avatar: avatarURL, likes: likes.length, 
         replies: replies.length, hasLiked: likes.includes(authedUser), 
         parent:!parentTweet ? null : {author: parentTweet.author,id: parentTweet.id,}} */
