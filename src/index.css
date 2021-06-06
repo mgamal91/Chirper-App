@@ -45,6 +45,7 @@ a {
 
 .active {
   font-weight: bold;
+  color:#00b5d6;
 }
 
 .nav ul {

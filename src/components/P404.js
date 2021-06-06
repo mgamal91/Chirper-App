@@ -1,9 +1,11 @@
 import React from 'react'
-
+import myImg from '../utils/404.png'
 function P404() {
     return (
         <div>
-            Page not found
+            
+          <img src={myImg} alt="pnf"/>
+          
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route , Switch} from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
@@ -25,12 +25,14 @@ class App extends Component {
               {/* match.params.id */}
               {this.props.loading === true ? null : (
                 <div>
+                  <Switch>
                   <Route path="/" exact component={Dashboard} />
                   <Route path="/new" component={NewTweet} />
                   <Route path="/tweet/:id" component={TweetPage} />
                   {/*       <Route path="/tweet" component={}><TweetPage match={{params:{id:'8xf0y6ziyjabvozdd253nd'}}}/></Route>
                    */}
-                   <Route path="" component={P404}/>
+                   <Route component={P404}/>
+                   </Switch>
                 </div>
               )}
             </div>

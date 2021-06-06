@@ -67,7 +67,8 @@ const tweets = (myTweets = {}, action) => {
           //we did distruction so insted of action.tweet.id we can write it as tweet.id
           //will recieve the tweet data then take replyingTo and add it to this tweet property
           //here we are using the rest operator where you take
-          //[tweet.id]:tweet, ...replyingTo} i could remove the ... and it will work as replying to is just 1 item
+          //[tweet.id]:tweet, ...replyingTo} if ... is removed when you are replying to a tweet the reply wont appear below
+          //error will be thrown 
           [tweet.id]:tweet, ...replyingTo}
       }
     default:
